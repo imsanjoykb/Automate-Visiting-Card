@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:visiting_card/helper/constants.dart';
 import 'package:visiting_card/model/contact_model.dart';
 import 'package:visiting_card/provider/contact_provider.dart';
@@ -137,8 +138,7 @@ class _NewContactPageState extends State<NewContactPage> {
           emailAddress: _emailController.text,
           streetAddress: _addressController.text);
 
-      final provider = ContactProvider();
-      provider.addContact(contact);
+      Provider.of<ContactProvider>(context, listen: false).addContact(contact);
       Navigator.pop(context);
     }
   }
